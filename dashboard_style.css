@@ -1,0 +1,78 @@
+/* =================================================================== */
+/* === FINAL EMERGENCY CSS FOR DASHBOARD PAGE === */
+/* =================================================================== */
+
+/* Universal Reset & Font */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+/* Color Variables */
+:root {
+    --background: hsl(210, 20%, 97%); --foreground: hsl(210, 25%, 15%);
+    --card: hsl(0, 0%, 100%); --primary: hsl(210, 85%, 25%);
+    --secondary: hsl(195, 75%, 88%); --accent: hsl(180, 85%, 35%);
+    --muted-foreground: hsl(210, 15%, 45%); --border: hsl(195, 20%, 85%);
+    --radius: 0.75rem; --gradient-ocean: linear-gradient(135deg, hsl(210 85% 25%), hsl(195 85% 45%), hsl(180 85% 35%));
+    --gradient-surface: linear-gradient(180deg, hsl(195 75% 88%), hsl(195 60% 95%));
+    --shadow-data: 0 4px 20px hsl(195 85% 45% / 0.15);
+}
+
+body { background: var(--gradient-surface); color: hsl(var(--foreground)); min-height: 100vh; }
+.gradient-text { background: var(--gradient-ocean); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Navbar */
+.navbar { position: fixed; top: 0; left: 0; width: 100%; background-color: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); z-index: 1000; padding: 1rem 5%; border-bottom: 1px solid var(--border); }
+.navbar-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+.navbar-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; font-weight: 700; font-size: 1.5rem; }
+.navbar-logo .logo-path { fill: var(--primary); }
+.nav-links { display: flex; align-items: center; }
+.nav-links a { margin: 0 1rem; text-decoration: none; color: var(--muted-foreground); font-weight: 500; }
+.nav-links a:hover, .nav-links a.active { color: var(--primary); }
+.nav-buttons { display: flex; align-items: center; }
+.nav-buttons .btn-signin { background: none; border: none; color: var(--foreground); font-weight: 600; margin-right: 1rem; cursor: pointer; text-decoration: none; }
+.btn-primary { background-color: var(--accent); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.btn-secondary { background-color: var(--card); color: var(--primary); padding: 0.75rem 1.5rem; border: 1px solid var(--border); border-radius: var(--radius); font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+
+/* Main Dashboard Layout */
+.dashboard { padding: 110px 5% 4rem 5%; max-width: 1200px; margin: 0 auto; }
+.dashboard-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 2rem; gap: 1rem; }
+.dashboard-header h1 { font-size: 2.75rem; line-height: 1.2; }
+.dashboard-header p { color: var(--muted-foreground); }
+.header-buttons { display: flex; gap: 1rem; align-items: center; }
+.last-updated-text { font-size: 0.9rem; color: var(--muted-foreground); }
+.card { background-color: var(--card); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow-data); border: 1px solid var(--border); margin-bottom: 2rem; }
+
+/* SIMPLIFIED FILTERS AND STATS LAYOUT */
+.filters-container, .stats-bar { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 2rem; }
+.filter-item { flex: 1 1 200px; } /* Allows items to wrap nicely */
+.stat-card { flex: 1 1 200px; text-align: center; }
+
+.filter-item label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500; color: var(--muted-foreground); }
+.filter-item select, .filter-item input { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: calc(var(--radius) - 2px); font-size: 1rem; background-color: hsl(220 25% 98%); }
+
+/* SIMPLIFIED MAIN CHART AREA LAYOUT */
+.dashboard-grid { display: flex; flex-direction: column; gap: 2rem; }
+.viz-card { width: 100%; } /* Each card takes full width and stacks vertically */
+
+.viz-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.icon-wrapper { background-color: var(--secondary); border-radius: calc(var(--radius) - 2px); padding: 0.75rem; display: grid; place-items: center; }
+.viz-icon { font-size: 1.5rem; color: var(--primary); }
+.viz-header h3 { color: var(--primary); margin-bottom: 0.1rem; }
+.viz-header p { font-size: 0.9rem; color: var(--muted-foreground); }
+.viz-placeholder { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 300px; }
+
+.stat-card h2 { font-size: 2.25rem; color: var(--primary); margin-bottom: 0.5rem; }
+.stat-card p { font-weight: 600; }
+.stat-card span { font-size: 0.9rem; color: var(--muted-foreground); }
+
+/* Modal and Message Styles */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
+.modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: var(--radius); }
+.modal-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+.modal-header h2 { color: var(--primary); }
+.close-button { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+.modal-body { padding-top: 15px; }
+.modal-body .filter-item { margin-bottom: 15px; }
+.disabled-message { display: none; text-align: center; color: var(--muted-foreground); padding: 2rem; font-style: italic; }
+
+@media (max-width: 768px) { .nav-links { display: none; } }
+@media (max-width: 576px) { .nav-buttons .btn-signin { display: none; } }
